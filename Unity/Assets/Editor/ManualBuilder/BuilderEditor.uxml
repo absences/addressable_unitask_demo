@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="BuildContainer">
+        <uie:EnumField label="Build Target" name="BuildPlatform" />
+        <uie:EnumField label="Build SdkType" name="SDKType" />
+        <uie:EnumField label="Build Version" name="BuildType" />
+        <uie:EnumField label="MarksStatus" name="MarksStatus" />
+        <ui:TextField picking-mode="Ignore" label="ResUrl" name="ResUrl" style="width: 550px;" />
+        <ui:TextField picking-mode="Ignore" label="GameServerAddress" name="GameServerAddress" style="width: 550px;" />
+        <ui:Toggle label="Use Debug" name="EnableDebug" style="width: 196px; -unity-text-align: middle-left;" />
+        <ui:Toggle label="Enable HOT_UPDATE" name="HOT_UPDATE" style="width: 196px; -unity-text-align: middle-left;" />
+        <uie:IntegerField label="CodeVersion" name="CodeVersion" />
+        <ui:TextField picking-mode="Ignore" label="params:" name="BuildParam" style="width: 550px; height: 100px; white-space: normal;" />
+        <ui:Button text="构建初始资源与打包" display-tooltip-when-elided="true" name="Build" style="height: 35px; background-color: rgb(40, 106, 42); margin-top: 10px; font-size: 18px;" />
+        <ui:Button text="构建热更新资源" display-tooltip-when-elided="true" name="BuildHot" style="height: 35px; background-color: rgb(106, 99, 40); margin-top: 10px; font-size: 18px;" />
+    </ui:VisualElement>
+</ui:UXML>
