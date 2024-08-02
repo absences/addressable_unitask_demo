@@ -5,19 +5,19 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BuilderEditor : EditorWindow
+public class BuildWindowEditor : EditorWindow
 {/// <summary>
  /// 停靠窗口类型集合
  /// </summary>
     public static readonly Type[] DockedWindowTypes =
     {
-       typeof(BuilderEditor),
+       typeof(BuildWindowEditor),
     };
 
-    [MenuItem("Tools/Addressable Builder", false, 4)]
+    [MenuItem("Tools/Addressable Build Window", false, 4)]
     public static void ShowWindow()
     {
-        BuilderEditor window = GetWindow<BuilderEditor>("构建工具", true, DockedWindowTypes);
+        BuildWindowEditor window = GetWindow<BuildWindowEditor>("构建工具", true, DockedWindowTypes);
         window.minSize = new Vector2(600, 450);
         window.maxSize = new Vector2(600, 450);
     }
@@ -39,7 +39,7 @@ public class BuilderEditor : EditorWindow
         {
             VisualElement root = this.rootVisualElement;
 
-            var visualAsset = EditorHelper.LoadWindowUXML<BuilderEditor>();
+            var visualAsset = EditorHelper.LoadWindowUXML<BuildWindowEditor>();
             if (visualAsset == null)
                 return;
 
@@ -49,7 +49,21 @@ public class BuilderEditor : EditorWindow
 
             _buildTargetField.Init(EBuildTarget.StandaloneWindows64);
 
-            _buildTargetField.SetValueWithoutNotify(EBuildTarget.StandaloneWindows64);
+            switch (EditorUserBuildSettings.activeBuildTarget)
+            {
+                case BuildTarget.StandaloneWindows64:
+                    _buildTargetField.SetValueWithoutNotify(EBuildTarget.StandaloneWindows64);
+                    break;
+                case BuildTarget.Android:
+                    _buildTargetField.SetValueWithoutNotify(EBuildTarget.Android);
+                    break;
+                case BuildTarget.iOS:
+                    _buildTargetField.SetValueWithoutNotify(EBuildTarget.iOS);
+                    break;
+                case BuildTarget.WebGL:
+                    _buildTargetField.SetValueWithoutNotify(EBuildTarget.WeChat);
+                    break;
+            }
             _buildTargetField.style.width = 350;
             _buildTargetField.RegisterValueChangedCallback(evt =>
             {
@@ -84,7 +98,6 @@ public class BuilderEditor : EditorWindow
             _buildVersion.RegisterValueChangedCallback((val) => {
                 RefreshWindow();
             });
-
 
             _buildMarkStatus = root.Q<EnumField>("MarksStatus");
             _buildMarkStatus.Init(MarksStatus.Separate);

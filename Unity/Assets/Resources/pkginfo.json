@@ -4,7 +4,7 @@
   "HOT_UPDATE": true,
   "ResUrl": "http://192.168.1.92/ServerData",
   "Language": "ch",
-  "GetPlatformStr": "StandaloneWindows64",
+  "GetPlatformStr": "Android",
   "BuildType": "dev",
   "PkgVersion": 100,
   "EnableDebug": true,
