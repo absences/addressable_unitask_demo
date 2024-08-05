@@ -1,5 +1,6 @@
 ﻿using HybridCLR.Editor;
 using HybridCLR.Editor.Commands;
+using HybridCLR.Editor.Installer;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -9,6 +10,13 @@ public class HybridCLREditor
     [MenuItem("Tools/Compile Mono and AOT Dll")]
     public static void CompileDll()
     {
+        var installer = new InstallerController();
+
+        if (!installer.HasInstalledHybridCLR())
+        {
+            installer.InstallDefaultHybridCLR();
+        }
+
         CompileDllCommand.CompileDll(EditorUserBuildSettings.activeBuildTarget);
 
         PrebuildCommand.GenerateAll();
