@@ -42,22 +42,22 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 22d4e23191235f745a022798d45f5999, type: 3}
   - {fileID: 21300000, guid: 6e137862f0da4f946ab379c8f0e8a708, type: 3}
   - {fileID: 21300000, guid: 90ab4ec57907db441bb25857c4526fe7, type: 3}
-  - {fileID: 21300000, guid: fe5525395a5d9bf41992eee1e3c734e6, type: 3}
   - {fileID: 21300000, guid: ef56bbea93e0785498bcbdd650fdd503, type: 3}
   - {fileID: 21300000, guid: cf51e01b745b85a43a20b38eddaed7ea, type: 3}
   - {fileID: 21300000, guid: c930d46c79530b6418740f19adccef40, type: 3}
   - {fileID: 21300000, guid: 72db911ea82e83a40b17580e9f9db50a, type: 3}
+  - {fileID: 21300000, guid: f86ebd5e7bee53846bbae3a8f9f47ccb, type: 3}
   - {fileID: 21300000, guid: 8611905f1134ce8429e97f5e1472d7b1, type: 3}
   m_PackedSpriteNamesToIndex:
   - ArchangelsStaffRadiant
   - AdaptiveHelmRadiant
   - BlueBuff
   - BloodthirsterRadiant
-  - BFSword
   - Bloodthirster
   - BlueBuffRadiant
   - BrambleVest
   - AdaptiveHelm
+  - BFSword
   - ArchangelsStaff
   m_RenderDataMap: {}
   m_Tag: equip

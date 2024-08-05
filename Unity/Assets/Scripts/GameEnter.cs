@@ -11,6 +11,8 @@ using UnityEngine.UI;
 public class GameEnter : MonoBehaviour
 {
     public Image Image;
+
+    public HotFixComponent hotFixComponent;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,9 @@ public class GameEnter : MonoBehaviour
     async UniTask LoadTest()
     {
         await InitAddresable();
+
+        await hotFixComponent.Init();
+
         var handle = Addressables.LoadAssetAsync<Sprite>("equip/BFSword.png");
 
         await handle.Task;
@@ -114,6 +119,7 @@ public class GameEnter : MonoBehaviour
             progressCallback?.Invoke(x);
         });
         await downloadHandle.ToUniTask(progress);
+
         downloadHandle.Release();
 
         await UniTask.DelayFrame(1);
