@@ -9,7 +9,6 @@ public class HybridCLREditor
     [MenuItem("Tools/Compile Mono and AOT Dll")]
     public static void CompileDll()
     {
-
         CompileDllCommand.CompileDll(EditorUserBuildSettings.activeBuildTarget);
 
         PrebuildCommand.GenerateAll();

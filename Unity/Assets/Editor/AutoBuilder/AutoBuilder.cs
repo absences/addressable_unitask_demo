@@ -303,6 +303,11 @@ public class AutoBuilder
                 break;
         }
         AssetDatabase.Refresh();
+
+        HybridCLREditor.CompileDll();
+
+        AssetDatabase.Refresh();
+
         //mabe import assets
         AddressableAssetSettings.BuildPlayerContent();//输出
 
