@@ -163,7 +163,6 @@ public class BuildWindowEditor : EditorWindow
     void BuildHotUpdate()
     {
         BuildParam.Args = GetParam();
-        AutoBuilder.ExecuteForFixPreLoad();
         AutoBuilder.BuildHotUpdate();
     }
     private void RefreshWindow()

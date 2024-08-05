@@ -332,7 +332,7 @@ public class AutoBuilder
     }
 
 
-    public static void ExecuteForFixPreLoad()
+    public static void PreloadForUpdate()
     {
         var info = BuildParam.GetCustomerParam();
 
@@ -349,6 +349,29 @@ public class AutoBuilder
         var txt = File.ReadAllText(path);
         PkgInfo pinfo = JsonTool.FromJson<PkgInfo>(txt);
 
+        
+
+    }
+
+    public static void BuildHotUpdate()
+    {
+        //资源更新上传
+        var info = BuildParam.GetCustomerParam();
+
+        string CodeVersion = info.Get("CodeVersion", "150");
+        //string SERVERDATA = info.Get("SERVERDATA", "");
+
+        var disPath = string.Format("{0}/../ServerData/{1}_{2}",
+            Application.dataPath, CodeVersion, "pkginfo.json");
+
+        var txt = File.ReadAllText(disPath);
+        PkgInfo pinfo = JsonTool.FromJson<PkgInfo>(txt);
+
+        if (!pinfo.HOT_UPDATE)//no hot update
+        {
+            Debug.Log($"{CodeVersion} not hot update");
+            return;
+        }
         if (pinfo.GetPlatformStr == WIN)
         {
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows64);
@@ -361,41 +384,19 @@ public class AutoBuilder
         {
             EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
         }
+
         //将备份的bin文件放回工程便于读取更新信息
         var bin = ContentUpdateScript.GetContentStateDataPath(false);
         // Assets\AddressableAssetsData\Android\addressables_content_state.bin
-        var name = Path.GetFileName(bin);
-        var bintPath = Application.dataPath.Replace("Assets", "") + bin;
 
-        var disPath = string.Format("{0}/../ServerData/{1}/{2}_{3}/{4}",
-              Application.dataPath, pinfo.GetPlatformStr, pinfo.PkgVersion, pinfo.BuildType, name);
-        if (File.Exists(bintPath))
-            File.Delete(bintPath);
-        FileUtil.CopyFileOrDirectory(disPath, bintPath);
+        var destFilePath = Application.dataPath.Replace("Assets", "") + bin;
+
+        var sourceFilePath = string.Format("{0}/../ServerData/{1}/{2}_{3}/{4}",
+              Application.dataPath, pinfo.GetPlatformStr, pinfo.PkgVersion, pinfo.BuildType, Path.GetFileName(bin));
+        if (File.Exists(destFilePath))
+            File.Delete(destFilePath);
+        FileUtil.CopyFileOrDirectory(sourceFilePath, destFilePath);
         AssetDatabase.Refresh();
-
-    }
-
-    public static void BuildHotUpdate()
-    {
-       
-        //资源更新上传
-        var info = BuildParam.GetCustomerParam();
-
-        string CodeVersion = info.Get("CodeVersion", "150");
-        //string SERVERDATA = info.Get("SERVERDATA", "");
-
-        var disPath = string.Format("{0}/../ServerData/{1}_{2}",
-            Application.dataPath, CodeVersion, "pkginfo.json");
-
-        var txt = File.ReadAllText(disPath);
-        PkgInfo pinfo = JsonTool.FromJson<PkgInfo>(txt);
-        if (!pinfo.HOT_UPDATE)//no hot update
-        {
-            Debug.Log($"{CodeVersion} not hot update");
-            return;
-        }
-         
 
         //if (pinfo.GetPlatformStr == WIN)
         //{
