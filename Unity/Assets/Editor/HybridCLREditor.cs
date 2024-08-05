@@ -79,7 +79,7 @@ public class HybridCLREditor
             {
                 string destFilePath = $"{hotfixAssembliesDstDir}/{dll.Replace(".dll", "_pdb.bytes")}";
 
-                File.Copy(sourceFilePath, destFilePath, true);
+                File.Copy(pdbSourcePath, destFilePath, true);
             }
         }
     }
