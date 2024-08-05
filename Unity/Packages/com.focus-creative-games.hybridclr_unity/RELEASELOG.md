@@ -1,5 +1,16 @@
 # 发布日志
 
+## 6.5.0
+
+发布日期 2024.8.5.
+
+### Runtime
+
+- [new] 2019-2020版本热更新函数堆栈也能正常显示代码文件及行号
+- [merge] 合并Unity 6000.0.1-6000.0.10的il2cpp改动
+
+## 6.4.0
+
 发布日期 2024.7.25.
 
 ### Runtime
@@ -13,6 +24,8 @@
 
 - [fix][严重] 修复生成MethodBridge过程中计算等价类时未考虑到ClassLayout、Layout和FieldOffset因素的bug
 - [fix] 修复Library/PlayerDataCache目录不存在时，PatchScriptingAssembliesJsonHook运行异常的bug
+
+## 6.3.0
 
 发布日期 2024.7.15.
 
