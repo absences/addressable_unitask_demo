@@ -6,7 +6,7 @@
   "Language": "ch",
   "GetPlatformStr": "Android",
   "BuildType": "dev",
-  "PkgVersion": 103,
+  "PkgVersion": 107,
   "EnableDebug": true,
   "SdkType": "Standard"
 }
