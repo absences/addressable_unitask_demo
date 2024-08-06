@@ -68,7 +68,7 @@ function Main()
 
     BuildUpdate
 
-    GitPush "Unity/ServerData" "build asset $BUILD_NUMBER"
+    GitPush "Unity/ServerData" "build update $BUILD_NUMBER"
 }
 
 Main
