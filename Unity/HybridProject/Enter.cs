@@ -8,7 +8,7 @@ namespace HybridProject
     {
         public static void Init()
         {
-            Debug.Log(12);
+            Debug.Log(13);
            // var t = new T();
 
            // var s = JsonTool.ToJson(t);
