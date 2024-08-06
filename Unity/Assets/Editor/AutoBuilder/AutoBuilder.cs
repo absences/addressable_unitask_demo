@@ -410,6 +410,9 @@ public class AutoBuilder
         //{
         //    IFixEditor.GenPlatformPatch(IFixEditor.Platform.ios);
         //}
+        HybridCLREditor.CompileDll();
+
+        AssetDatabase.Refresh();
 
         var path = ContentUpdateScript.GetContentStateDataPath(false);
 
