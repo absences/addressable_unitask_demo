@@ -82,6 +82,14 @@ function Main()
     BuildPlatform
 
     GitPush "Unity/ServerData" "build asset $BUILD_NUMBER"
+
+    SUFFIX="_"$SDKType"_"$BuildType
+
+    if [ "$EnableDebug" = true ] then
+        SUFFIX="_"$SDKType"_"$BuildType"_Debug"
+    fi
+
+    mv $UNITY_AUTOBUILD_PATH/AutoBuild.apk $TARGET_PATH/$BUILD_NUMBER$SUFFIX.apk
 }
 
 Main
